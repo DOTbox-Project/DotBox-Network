@@ -6,22 +6,25 @@
 version: '2'
 
 volumes:
-  orderer.example.com:
-  peer0.org1.example.com:
-  peer0.org2.example.com:
-
+  orderer.dot-box.com:
+  peer0.producerorg.dot-box.com:
+  peer0.processororg.dot-box.com:
+  peer0.regulatororg.dot-box.com:
+  peer0.wholesaleorg.dot-box.com:
+  peer0.retailorg.dot-box.com:
+  peer0.consumerorg.dot-box.com:
 networks:
   test:
 
 services:
 
-  orderer.example.com:
-    container_name: orderer.example.com
+  orderer.dot-box.com:
+    container_name: orderer.dot-box.com
     image: hyperledger/fabric-orderer:$IMAGE_TAG
     environment:
       - FABRIC_LOGGING_SPEC=INFO
       - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
-      - ORDERER_GENERAL_LISTENPORT=7050
+      - ORDERER_GENERAL_LISTENPORT=13050
       - ORDERER_GENERAL_GENESISMETHOD=file
       - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
       - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
@@ -40,16 +43,16 @@ services:
     command: orderer
     volumes:
         - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
-        - ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp:/var/hyperledger/orderer/msp
-        - ../organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/:/var/hyperledger/orderer/tls
-        - orderer.example.com:/var/hyperledger/production/orderer
+        - ../organizations/ordererOrganizations/dot-box.com/orderers/orderer.dot-box.com/msp:/var/hyperledger/orderer/msp
+        - ../organizations/ordererOrganizations/dot-box.com/orderers/orderer.dot-box.com/tls/:/var/hyperledger/orderer/tls
+        - orderer.dot-box.com:/var/hyperledger/production/orderer
     ports:
-      - 7050:7050
+      - 13050:13050
     networks:
       - test
 
-  peer0.org1.example.com:
-    container_name: peer0.org1.example.com
+  peer0.producerorg.dot-box.com:
+    container_name: peer0.producerorg.dot-box.com
     image: hyperledger/fabric-peer:$IMAGE_TAG
     environment:
       #Generic peer variables
@@ -66,19 +69,19 @@ services:
       - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
       - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
       # Peer specific variabes
-      - CORE_PEER_ID=peer0.org1.example.com
-      - CORE_PEER_ADDRESS=peer0.org1.example.com:7051
+      - CORE_PEER_ID=peer0.producerorg.dot-box.com
+      - CORE_PEER_ADDRESS=peer0.producerorg.dot-box.com:7051
       - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
-      - CORE_PEER_CHAINCODEADDRESS=peer0.org1.example.com:7052
+      - CORE_PEER_CHAINCODEADDRESS=peer0.producerorg.dot-box.com:7052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org1.example.com:7051
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org1.example.com:7051
-      - CORE_PEER_LOCALMSPID=Org1MSP
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.producerorg.dot-box.com:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.producerorg.dot-box.com:7051
+      - CORE_PEER_LOCALMSPID=producerOrgMSP
     volumes:
         - /var/run/docker.sock:/host/var/run/docker.sock
-        - ../organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp:/etc/hyperledger/fabric/msp
-        - ../organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls:/etc/hyperledger/fabric/tls
-        - peer0.org1.example.com:/var/hyperledger/production
+        - ../organizations/peerOrganizations/producerorg.dot-box.com/peers/peer0.producerorg.dot-box.com/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/producerorg.dot-box.com/peers/peer0.producerorg.dot-box.com/tls:/etc/hyperledger/fabric/tls
+        - peer0.producerorg.dot-box.com:/var/hyperledger/production
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: peer node start
     ports:
@@ -86,8 +89,8 @@ services:
     networks:
       - test
 
-  peer0.org2.example.com:
-    container_name: peer0.org2.example.com
+  peer0.processororg.dot-box.com:
+    container_name: peer0.processororg.dot-box.com
     image: hyperledger/fabric-peer:$IMAGE_TAG
     environment:
       #Generic peer variables
@@ -104,23 +107,175 @@ services:
       - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
       - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
       # Peer specific variabes
-      - CORE_PEER_ID=peer0.org2.example.com
-      - CORE_PEER_ADDRESS=peer0.org2.example.com:9051
-      - CORE_PEER_LISTENADDRESS=0.0.0.0:9051
-      - CORE_PEER_CHAINCODEADDRESS=peer0.org2.example.com:9052
-      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:9052
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org2.example.com:9051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org2.example.com:9051
-      - CORE_PEER_LOCALMSPID=Org2MSP
+      - CORE_PEER_ID=peer0.processororg.dot-box.com
+      - CORE_PEER_ADDRESS=peer0.processororg.dot-box.com:8051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:8051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.processororg.dot-box.com:8052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:8052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.processororg.dot-box.com:8051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.processororg.dot-box.com:8051
+      - CORE_PEER_LOCALMSPID=processorOrgMSP
     volumes:
         - /var/run/docker.sock:/host/var/run/docker.sock
-        - ../organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/msp:/etc/hyperledger/fabric/msp
-        - ../organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls:/etc/hyperledger/fabric/tls
-        - peer0.org2.example.com:/var/hyperledger/production
+        - ../organizations/peerOrganizations/processororg.dot-box.com/peers/peer0.processororg.dot-box.com/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/processororg.dot-box.com/peers/peer0.processororg.dot-box.com/tls:/etc/hyperledger/fabric/tls
+        - peer0.processororg.dot-box.com:/var/hyperledger/production
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 8051:8051
+    networks:
+      - test
+
+  peer0.regulatororg.dot-box.com:
+    container_name: peer0.regulatororg.dot-box.com
+    image: hyperledger/fabric-peer:$IMAGE_TAG
+    environment:
+      #Generic peer variables
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      # the following setting starts chaincode containers on the same
+      # bridge network as the peers
+      # https://docs.docker.com/compose/networking/
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_test
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.regulatororg.dot-box.com
+      - CORE_PEER_ADDRESS=peer0.regulatororg.dot-box.com:9051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:9051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.regulatororg.dot-box.com:9052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:9052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.regulatororg.dot-box.com:9051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.regulatororg.dot-box.com:9051
+      - CORE_PEER_LOCALMSPID=regulatorOrgMSP
+    volumes:
+        - /var/run/docker.sock:/host/var/run/docker.sock
+        - ../organizations/peerOrganizations/regulatororg.dot-box.com/peers/peer0.regulatororg.dot-box.com/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/regulatororg.dot-box.com/peers/peer0.regulatororg.dot-box.com/tls:/etc/hyperledger/fabric/tls
+        - peer0.regulatororg.dot-box.com:/var/hyperledger/production
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: peer node start
     ports:
       - 9051:9051
+    networks:
+      - test
+
+  peer0.wholesaleorg.dot-box.com:
+    container_name: peer0.wholesaleorg.dot-box.com
+    image: hyperledger/fabric-peer:$IMAGE_TAG
+    environment:
+      #Generic peer variables
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      # the following setting starts chaincode containers on the same
+      # bridge network as the peers
+      # https://docs.docker.com/compose/networking/
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_test
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.wholesaleorg.dot-box.com
+      - CORE_PEER_ADDRESS=peer0.wholesaleorg.dot-box.com:10051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:10051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.wholesaleorg.dot-box.com:10052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:10052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.wholesaleorg.dot-box.com:10051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.wholesaleorg.dot-box.com:10051
+      - CORE_PEER_LOCALMSPID=wholesaleOrgMSP
+    volumes:
+        - /var/run/docker.sock:/host/var/run/docker.sock
+        - ../organizations/peerOrganizations/wholesaleorg.dot-box.com/peers/peer0.wholesaleorg.dot-box.com/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/wholesaleorg.dot-box.com/peers/peer0.wholesaleorg.dot-box.com/tls:/etc/hyperledger/fabric/tls
+        - peer0.wholesaleorg.dot-box.com:/var/hyperledger/production
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 10051:10051
+    networks:
+      - test
+
+  peer0.retailorg.dot-box.com:
+    container_name: peer0.retailorg.dot-box.com
+    image: hyperledger/fabric-peer:$IMAGE_TAG
+    environment:
+      #Generic peer variables
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      # the following setting starts chaincode containers on the same
+      # bridge network as the peers
+      # https://docs.docker.com/compose/networking/
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_test
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.retailorg.dot-box.com
+      - CORE_PEER_ADDRESS=peer0.retailorg.dot-box.com:11051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:11051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.retailorg.dot-box.com:11052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:11052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.retailorg.dot-box.com:11051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.retailorg.dot-box.com:11051
+      - CORE_PEER_LOCALMSPID=retailOrgMSP
+    volumes:
+        - /var/run/docker.sock:/host/var/run/docker.sock
+        - ../organizations/peerOrganizations/retailorg.dot-box.com/peers/peer0.retailorg.dot-box.com/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/retailorg.dot-box.com/peers/peer0.retailorg.dot-box.com/tls:/etc/hyperledger/fabric/tls
+        - peer0.retailorg.dot-box.com:/var/hyperledger/production
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 11051:11051
+    networks:
+      - test
+
+  peer0.consumerorg.dot-box.com:
+    container_name: peer0.consumerorg.dot-box.com
+    image: hyperledger/fabric-peer:$IMAGE_TAG
+    environment:
+      #Generic peer variables
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      # the following setting starts chaincode containers on the same
+      # bridge network as the peers
+      # https://docs.docker.com/compose/networking/
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_test
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.consumerorg.dot-box.com
+      - CORE_PEER_ADDRESS=peer0.consumerorg.dot-box.com:12051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:12051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.consumerorg.dot-box.com:12052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:12052
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.consumerorg.dot-box.com:12051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.consumerorg.dot-box.com:12051
+      - CORE_PEER_LOCALMSPID=consumerOrgMSP
+    volumes:
+        - /var/run/docker.sock:/host/var/run/docker.sock
+        - ../organizations/peerOrganizations/consumerorg.dot-box.com/peers/peer0.consumerorg.dot-box.com/msp:/etc/hyperledger/fabric/msp
+        - ../organizations/peerOrganizations/consumerorg.dot-box.com/peers/peer0.consumerorg.dot-box.com/tls:/etc/hyperledger/fabric/tls
+        - peer0.consumerorg.dot-box.com:/var/hyperledger/production
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 12051:12051
     networks:
       - test
   
@@ -141,7 +296,11 @@ services:
         - ../organizations:/opt/gopath/src/github.com/hyperledger/fabric/peer/organizations
         - ../scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
     depends_on:
-      - peer0.org1.example.com
-      - peer0.org2.example.com
+      - peer0.producerorg.dot-box.com
+      - peer0.processororg.dot-box.com
+      - peer0.regulatororg.dot-box.com
+      - peer0.wholesaleorg.dot-box.com
+      - peer0.retailorg.dot-box.com
+      - peer0.consumerorg.dot-box.com
     networks:
       - test
