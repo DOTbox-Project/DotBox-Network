@@ -143,20 +143,60 @@ function createOrgs() {
     fi
     infoln "Generating certificates using cryptogen tool"
 
-    infoln "Creating Org1 Identities"
+    infoln "Creating Producer Org Identities"
 
     set -x
-    cryptogen generate --config=./organizations/cryptogen/crypto-config-org1.yaml --output="organizations"
+    cryptogen generate --config=./organizations/cryptogen/crypto-config-producerorg.yaml --output="organizations"
     res=$?
     { set +x; } 2>/dev/null
     if [ $res -ne 0 ]; then
       fatalln "Failed to generate certificates..."
     fi
 
-    infoln "Creating Org2 Identities"
+    infoln "Creating Processor Org Identities"
 
     set -x
-    cryptogen generate --config=./organizations/cryptogen/crypto-config-org2.yaml --output="organizations"
+    cryptogen generate --config=./organizations/cryptogen/crypto-config-processororg.yaml --output="organizations"
+    res=$?
+    { set +x; } 2>/dev/null
+    if [ $res -ne 0 ]; then
+      fatalln "Failed to generate certificates..."
+    fi
+
+    infoln "Creating Regulator Org Identities"
+
+        set -x
+        cryptogen generate --config=./organizations/cryptogen/crypto-config-regulatororg.yaml --output="organizations"
+        res=$?
+        { set +x; } 2>/dev/null
+        if [ $res -ne 0 ]; then
+          fatalln "Failed to generate certificates..."
+        fi
+
+    infoln "Creating Wholesale Org Identities"
+
+        set -x
+        cryptogen generate --config=./organizations/cryptogen/crypto-config-wholesaleorg.yaml --output="organizations"
+        res=$?
+        { set +x; } 2>/dev/null
+        if [ $res -ne 0 ]; then
+          fatalln "Failed to generate certificates..."
+        fi
+
+    infoln "Creating Retail Org Identities"
+
+        set -x
+        cryptogen generate --config=./organizations/cryptogen/crypto-config-retailorg.yaml --output="organizations"
+        res=$?
+        { set +x; } 2>/dev/null
+        if [ $res -ne 0 ]; then
+          fatalln "Failed to generate certificates..."
+        fi
+
+    infoln "Creating Consumer Org Identities"
+
+    set -x
+    cryptogen generate --config=./organizations/cryptogen/crypto-config-consumerorg.yaml --output="organizations"
     res=$?
     { set +x; } 2>/dev/null
     if [ $res -ne 0 ]; then
@@ -185,20 +225,32 @@ function createOrgs() {
 
   while :
     do
-      if [ ! -f "organizations/fabric-ca/org1/tls-cert.pem" ]; then
+      if [ ! -f "organizations/fabric-ca/producerorg/tls-cert.pem" ]; then
         sleep 1
       else
         break
       fi
     done
 
-    infoln "Creating Org1 Identities"
+    infoln "Creating Producer Org Identities"
 
-    createOrg1
+    createProducerOrg
 
-    infoln "Creating Org2 Identities"
+    infoln "Creating Processor Org Identities"
 
-    createOrg2
+    createProcessorOrg
+
+    infoln "Creating Regulator Org Identities"
+
+    createRegulatorOrg
+
+    infoln "Creating Wholesale Org Identities"
+
+    createWholesaleOrg
+
+    infoln "Creating Consumer Org Identities"
+
+    createConsumerOrg
 
     infoln "Creating Orderer Org Identities"
 
@@ -206,7 +258,7 @@ function createOrgs() {
 
   fi
 
-  infoln "Generating CCP files for Org1 and Org2"
+  infoln "Generating CCP files for all the organizations"
   ./organizations/ccp-generate.sh
 }
 
@@ -248,7 +300,7 @@ function createConsortium() {
   # Note: For some unknown reason (at least for now) the block file can't be
   # named orderer.genesis.block or the orderer will fail to launch!
   set -x
-  configtxgen -profile TwoOrgsOrdererGenesis -channelID system-channel -outputBlock ./system-genesis-block/genesis.block
+  configtxgen -profile SixOrgsOrdererGenesis -channelID system-channel -outputBlock ./system-genesis-block/genesis.block
   res=$?
   { set +x; } 2>/dev/null
   if [ $res -ne 0 ]; then
@@ -285,7 +337,7 @@ function networkUp() {
   fi
 }
 
-# call the script to create the channel, join the peers of org1 and org2,
+# call the script to create the channel, join the peers of all the organizations,
 # and then update the anchor peers for each organization
 function createChannel() {
   # Bring up the network if it is not already up.
@@ -328,10 +380,14 @@ function networkDown() {
     # remove orderer block and other channel configuration transactions and certs
     docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf system-genesis-block/*.block organizations/peerOrganizations organizations/ordererOrganizations'
     ## remove fabric ca artifacts
-    docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/org1/msp organizations/fabric-ca/org1/tls-cert.pem organizations/fabric-ca/org1/ca-cert.pem organizations/fabric-ca/org1/IssuerPublicKey organizations/fabric-ca/org1/IssuerRevocationPublicKey organizations/fabric-ca/org1/fabric-ca-server.db'
-    docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/org2/msp organizations/fabric-ca/org2/tls-cert.pem organizations/fabric-ca/org2/ca-cert.pem organizations/fabric-ca/org2/IssuerPublicKey organizations/fabric-ca/org2/IssuerRevocationPublicKey organizations/fabric-ca/org2/fabric-ca-server.db'
+    docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/producerorg/msp organizations/fabric-ca/producerorg/tls-cert.pem organizations/fabric-ca/producerorg/ca-cert.pem organizations/fabric-ca/producerorg/IssuerPublicKey organizations/fabric-ca/producerorg/IssuerRevocationPublicKey organizations/fabric-ca/producerorg/fabric-ca-server.db'
+    docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/processororg/msp organizations/fabric-ca/processororg/tls-cert.pem organizations/fabric-ca/processororg/ca-cert.pem organizations/fabric-ca/processororg/IssuerPublicKey organizations/fabric-ca/processororg/IssuerRevocationPublicKey organizations/fabric-ca/processororg/fabric-ca-server.db'
+    docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/regulatororg/msp organizations/fabric-ca/regulatororg/tls-cert.pem organizations/fabric-ca/regulatororg/ca-cert.pem organizations/fabric-ca/regulatororg/IssuerPublicKey organizations/fabric-ca/regulatororg/IssuerRevocationPublicKey organizations/fabric-ca/regulatororg/fabric-ca-server.db'
+    docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/wholesaleorg/msp organizations/fabric-ca/wholesaleorg/tls-cert.pem organizations/fabric-ca/wholesaleorg/ca-cert.pem organizations/fabric-ca/wholesaleorg/IssuerPublicKey organizations/fabric-ca/wholesaleorg/IssuerRevocationPublicKey organizations/fabric-ca/wholesaleorg/fabric-ca-server.db'
+    docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/retailorg/msp organizations/fabric-ca/retailorg/tls-cert.pem organizations/fabric-ca/retailorg/ca-cert.pem organizations/fabric-ca/retailorg/IssuerPublicKey organizations/fabric-ca/retailorg/IssuerRevocationPublicKey organizations/fabric-ca/retailorg/fabric-ca-server.db'
+    docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/consumerorg/msp organizations/fabric-ca/consumerorg/tls-cert.pem organizations/fabric-ca/consumerorg/ca-cert.pem organizations/fabric-ca/consumerorg/IssuerPublicKey organizations/fabric-ca/consumerorg/IssuerRevocationPublicKey organizations/fabric-ca/consumerorg/fabric-ca-server.db'
     docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf organizations/fabric-ca/ordererOrg/msp organizations/fabric-ca/ordererOrg/tls-cert.pem organizations/fabric-ca/ordererOrg/ca-cert.pem organizations/fabric-ca/ordererOrg/IssuerPublicKey organizations/fabric-ca/ordererOrg/IssuerRevocationPublicKey organizations/fabric-ca/ordererOrg/fabric-ca-server.db'
-    docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf addOrg3/fabric-ca/org3/msp addOrg3/fabric-ca/org3/tls-cert.pem addOrg3/fabric-ca/org3/ca-cert.pem addOrg3/fabric-ca/org3/IssuerPublicKey addOrg3/fabric-ca/org3/IssuerRevocationPublicKey addOrg3/fabric-ca/org3/fabric-ca-server.db'
+    docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf addNewOrg/fabric-ca/newOrg/msp addNewOrg/fabric-ca/newOrg/tls-cert.pem addNewOrg/fabric-ca/newOrg/ca-cert.pem addNewOrg/fabric-ca/newOrg/IssuerPublicKey addNewOrg/fabric-ca/newOrg/IssuerRevocationPublicKey addNewOrg/fabric-ca/newOrg/fabric-ca-server.db'
     # remove channel and script artifacts
     docker run --rm -v $(pwd):/data busybox sh -c 'cd /data && rm -rf channel-artifacts log.txt *.tar.gz'
   fi
@@ -366,9 +422,9 @@ COMPOSE_FILE_COUCH=docker/docker-compose-couch.yaml
 # certificate authorities compose file
 COMPOSE_FILE_CA=docker/docker-compose-ca.yaml
 # use this as the docker compose couch file for org3
-COMPOSE_FILE_COUCH_ORG3=addOrg3/docker/docker-compose-couch-org3.yaml
+COMPOSE_FILE_COUCH_NEWORG=addNewOrg/docker/docker-compose-couch-neworg.yaml
 # use this as the default docker-compose yaml definition for org3
-COMPOSE_FILE_ORG3=addOrg3/docker/docker-compose-org3.yaml
+COMPOSE_FILE_NEWORG=addNewOrg/docker/docker-compose-neworg.yaml
 #
 # chaincode language defaults to "NA"
 CC_SRC_LANGUAGE="NA"

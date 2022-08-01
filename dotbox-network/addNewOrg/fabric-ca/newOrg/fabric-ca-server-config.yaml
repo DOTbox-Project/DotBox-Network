@@ -40,7 +40,7 @@
 version: 1.2.0
 
 # Server's listening port (default: 7054)
-port: 11054
+port: 14054
 
 # Enables debug logging (default: false)
 debug: false
@@ -80,7 +80,7 @@ tls:
 #############################################################################
 ca:
   # Name of this CA
-  name: Org3CA
+  name: newOrgCA
   # Key file (is only used to import a private key into BCCSP)
   keyfile:
   # Certificate file (default: ca-cert.pem)
