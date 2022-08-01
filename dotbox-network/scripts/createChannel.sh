@@ -33,7 +33,7 @@ createChannel() {
 	while [ $rc -ne 0 -a $COUNTER -lt $MAX_RETRY ] ; do
 		sleep $DELAY
 		set -x
-		peer channel create -o localhost:7050 -c $CHANNEL_NAME --ordererTLSHostnameOverride orderer.example.com -f ./channel-artifacts/${CHANNEL_NAME}.tx --outputBlock $BLOCKFILE --tls --cafile $ORDERER_CA >&log.txt
+		peer channel create -o localhost:7050 -c $CHANNEL_NAME --ordererTLSHostnameOverride orderer.dot-box.com -f ./channel-artifacts/${CHANNEL_NAME}.tx --outputBlock $BLOCKFILE --tls --cafile $ORDERER_CA >&log.txt
 		res=$?
 		{ set +x; } 2>/dev/null
 		let rc=$res
@@ -84,15 +84,15 @@ createChannel
 successln "Channel '$CHANNEL_NAME' created"
 
 ## Join all the peers to the channel
-infoln "Joining org1 peer to the channel..."
+infoln "Joining producerorg peer to the channel..."
 joinChannel 1
-infoln "Joining org2 peer to the channel..."
+infoln "Joining processororg peer to the channel..."
 joinChannel 2
 
 ## Set the anchor peers for each org in the channel
-infoln "Setting anchor peer for org1..."
+infoln "Setting anchor peer for producerorg..."
 setAnchorPeer 1
-infoln "Setting anchor peer for org2..."
+infoln "Setting anchor peer for processororg..."
 setAnchorPeer 2
 
 successln "Channel '$CHANNEL_NAME' joined"
