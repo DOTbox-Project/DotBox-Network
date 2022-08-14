@@ -1,5 +1,5 @@
-Product={
-        componentIds: "Array",
+const Product={
+        componentIds: "Array<String>",
         id: "String",
         name: "String",
         placeOfOrigin: "String",
@@ -16,12 +16,12 @@ Product={
         approvedByAuth: "Boolean" 
     }
 
-ProductLocationData={
+const ProductLocationData={
     previous: "Array<ProductLocationEntry>",
     current: "ProductLocationEntry"
 }
 
-TestEntryData={
+const TestEntryData={
     tester: "String",
     testTimeStamp: "String",
     ripeness: "Boolean",
@@ -31,3 +31,9 @@ TestEntryData={
     colour: "String",
     sampleTested: "Number"
 }
+
+// Proposed Asset Methods
+// -createProduct method
+// -transportTo method
+// -getProductHistory method
+// -getProduct method
