@@ -13,10 +13,20 @@ OrdererOrgs:
   - Name: Orderer
     Domain: dot-box.com
     EnableNodeOUs: true
+
     # ---------------------------------------------------------------------------
-    # "Specs" - See PeerOrgs for complete description
+    # "Specs" - See PeerOrgs below for complete description
     # ---------------------------------------------------------------------------
     Specs:
       - Hostname: orderer
-        SANS:
-          - localhost
+      #   SANS:
+      #       - "localhost"
+      #       - "127.0.0.1"
+      # - Hostname: orderer2
+      #   SANS:
+      #     - "localhost"
+      #     - "127.0.0.1"
+      # - Hostname: orderer3
+      #   SANS:
+      #       - "localhost"
+      #       - "127.0.0.1"
