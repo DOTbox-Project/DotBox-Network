@@ -448,7 +448,7 @@ services:
       - ORDERER_GENERAL_LOGLEVEL=DEBUG
       - CORE_PEER_LOCALMSPID=ProducerOrgMSP
 
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=artifacts_test
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
 
       - CORE_PEER_ID=peer0.producerorg.dot-box.com
       - CORE_PEER_ADDRESS=peer0.producerorg.dot-box.com:7051
@@ -474,6 +474,7 @@ services:
       - couchdb0
     ports:
       - 7051:7051
+      - 7052:7052
     volumes:
       - ../organizations/crypto-config/peerOrganizations/producerorg.dot-box.com/peers/peer0.producerorg.dot-box.com/msp:/etc/hyperledger/crypto/peer/msp
       - ../organizations/crypto-config/peerOrganizations/producerorg.dot-box.com/peers/peer0.producerorg.dot-box.com/tls:/etc/hyperledger/crypto/peer/tls
@@ -492,7 +493,7 @@ services:
       - ORDERER_GENERAL_LOGLEVEL=debug
       - CORE_PEER_LOCALMSPID=ProducerOrgMSP
 
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=artifacts_test
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
 
       - CORE_PEER_ID=peer1.producerorg.dot-box.com
       - CORE_PEER_ADDRESS=peer1.producerorg.dot-box.com:8051
@@ -515,6 +516,7 @@ services:
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/crypto/peer/msp
     ports:
       - 8051:8051
+      - 8052:8052
     volumes:
       - ../organizations/crypto-config/peerOrganizations/producerorg.dot-box.com/peers/peer1.producerorg.dot-box.com/msp:/etc/hyperledger/crypto/peer/msp
       - ../organizations/crypto-config/peerOrganizations/producerorg.dot-box.com/peers/peer1.producerorg.dot-box.com/tls:/etc/hyperledger/crypto/peer/tls
@@ -533,7 +535,7 @@ services:
       - ORDERER_GENERAL_LOGLEVEL=debug
       - CORE_PEER_LOCALMSPID=ProcessorOrgMSP
 
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=artifacts_test
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
 
       - CORE_PEER_ID=peer0.processororg.dot-box.com
       - CORE_PEER_ADDRESS=peer0.processororg.dot-box.com:9051
@@ -556,6 +558,7 @@ services:
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/crypto/peer/msp
     ports:
       - 9051:9051
+      - 9052:9052
     volumes:
       - ../organizations/crypto-config/peerOrganizations/processororg.dot-box.com/peers/peer0.processororg.dot-box.com/msp:/etc/hyperledger/crypto/peer/msp
       - ../organizations/crypto-config/peerOrganizations/processororg.dot-box.com/peers/peer0.processororg.dot-box.com/tls:/etc/hyperledger/crypto/peer/tls
@@ -574,7 +577,7 @@ services:
       - ORDERER_GENERAL_LOGLEVEL=debug
       - CORE_PEER_LOCALMSPID=ProcessorOrgMSP
 
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=artifacts_test
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
 
       - CORE_PEER_ID=peer1.processororg.dot-box.com
       - CORE_PEER_ADDRESS=peer1.processororg.dot-box.com:10051
@@ -597,6 +600,7 @@ services:
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/crypto/peer/msp
     ports:
       - 10051:10051
+      - 10052:10052
     volumes:
       - ../organizations/crypto-config/peerOrganizations/processororg.dot-box.com/peers/peer1.processororg.dot-box.com/msp:/etc/hyperledger/crypto/peer/msp
       - ../organizations/crypto-config/peerOrganizations/processororg.dot-box.com/peers/peer1.processororg.dot-box.com/tls:/etc/hyperledger/crypto/peer/tls
@@ -616,7 +620,7 @@ services:
       - ORDERER_GENERAL_LOGLEVEL=debug
       - CORE_PEER_LOCALMSPID=RegulatorOrgMSP
 
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=artifacts_test
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
 
       - CORE_PEER_ID=peer0.regulatororg.dot-box.com
       - CORE_PEER_ADDRESS=peer0.regulatororg.dot-box.com:11051
@@ -639,6 +643,7 @@ services:
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/crypto/peer/msp
     ports:
       - 11051:11051
+      - 11052:11052
     volumes:
       - ../organizations/crypto-config/peerOrganizations/regulatororg.dot-box.com/peers/peer0.regulatororg.dot-box.com/msp:/etc/hyperledger/crypto/peer/msp
       - ../organizations/crypto-config/peerOrganizations/regulatororg.dot-box.com/peers/peer0.regulatororg.dot-box.com/tls:/etc/hyperledger/crypto/peer/tls
@@ -657,7 +662,7 @@ services:
       - ORDERER_GENERAL_LOGLEVEL=debug
       - CORE_PEER_LOCALMSPID=RegulatorOrgMSP
 
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=artifacts_test
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
 
       - CORE_PEER_ID=peer1.regulatororg.dot-box.com
       - CORE_PEER_ADDRESS=peer1.regulatororg.dot-box.com:12051
@@ -680,6 +685,7 @@ services:
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/crypto/peer/msp
     ports:
       - 12051:12051
+      - 12052:12052
     volumes:
       - ../organizations/crypto-config/peerOrganizations/regulatororg.dot-box.com/peers/peer1.regulatororg.dot-box.com/msp:/etc/hyperledger/crypto/peer/msp
       - ../organizations/crypto-config/peerOrganizations/regulatororg.dot-box.com/peers/peer1.regulatororg.dot-box.com/tls:/etc/hyperledger/crypto/peer/tls
@@ -698,7 +704,7 @@ services:
       - ORDERER_GENERAL_LOGLEVEL=debug
       - CORE_PEER_LOCALMSPID=WholesaleOrgMSP
 
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=artifacts_test
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
 
       - CORE_PEER_ID=peer0.wholesaleorg.dot-box.com
       - CORE_PEER_ADDRESS=peer0.wholesaleorg.dot-box.com:13051
@@ -721,6 +727,7 @@ services:
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/crypto/peer/msp
     ports:
       - 13051:13051
+      - 13052:13052
     volumes:
       - ../organizations/crypto-config/peerOrganizations/wholesaleorg.dot-box.com/peers/peer0.wholesaleorg.dot-box.com/msp:/etc/hyperledger/crypto/peer/msp
       - ../organizations/crypto-config/peerOrganizations/wholesaleorg.dot-box.com/peers/peer0.wholesaleorg.dot-box.com/tls:/etc/hyperledger/crypto/peer/tls
@@ -739,7 +746,7 @@ services:
       - ORDERER_GENERAL_LOGLEVEL=debug
       - CORE_PEER_LOCALMSPID=WholesaleOrgMSP
 
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=artifacts_test
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
 
       - CORE_PEER_ID=peer1.wholesaleorg.dot-box.com
       - CORE_PEER_ADDRESS=peer1.wholesaleorg.dot-box.com:14051
@@ -762,6 +769,7 @@ services:
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/crypto/peer/msp
     ports:
       - 14051:14051
+      - 14052:14052
     volumes:
       - ../organizations/crypto-config/peerOrganizations/wholesaleorg.dot-box.com/peers/peer1.wholesaleorg.dot-box.com/msp:/etc/hyperledger/crypto/peer/msp
       - ../organizations/crypto-config/peerOrganizations/wholesaleorg.dot-box.com/peers/peer1.wholesaleorg.dot-box.com/tls:/etc/hyperledger/crypto/peer/tls
@@ -780,7 +788,7 @@ services:
       - ORDERER_GENERAL_LOGLEVEL=debug
       - CORE_PEER_LOCALMSPID=RetailOrgMSP
 
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=artifacts_test
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
 
       - CORE_PEER_ID=peer0.retailorg.dot-box.com
       - CORE_PEER_ADDRESS=peer0.retailorg.dot-box.com:15051
@@ -803,6 +811,7 @@ services:
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/crypto/peer/msp
     ports:
       - 15051:15051
+      - 15052:15052
     volumes:
       - ../organizations/crypto-config/peerOrganizations/retailorg.dot-box.com/peers/peer0.retailorg.dot-box.com/msp:/etc/hyperledger/crypto/peer/msp
       - ../organizations/crypto-config/peerOrganizations/retailorg.dot-box.com/peers/peer0.retailorg.dot-box.com/tls:/etc/hyperledger/crypto/peer/tls
@@ -821,7 +830,7 @@ services:
       - ORDERER_GENERAL_LOGLEVEL=debug
       - CORE_PEER_LOCALMSPID=RetailOrgMSP
 
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=artifacts_test
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
 
       - CORE_PEER_ID=peer1.retailorg.dot-box.com
       - CORE_PEER_ADDRESS=peer1.retailorg.dot-box.com:16051
@@ -844,6 +853,7 @@ services:
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/crypto/peer/msp
     ports:
       - 16051:16051
+      - 16052:16052
     volumes:
       - ../organizations/crypto-config/peerOrganizations/retailorg.dot-box.com/peers/peer1.retailorg.dot-box.com/msp:/etc/hyperledger/crypto/peer/msp
       - ../organizations/crypto-config/peerOrganizations/retailorg.dot-box.com/peers/peer1.retailorg.dot-box.com/tls:/etc/hyperledger/crypto/peer/tls
@@ -862,7 +872,7 @@ services:
       - ORDERER_GENERAL_LOGLEVEL=debug
       - CORE_PEER_LOCALMSPID=ConsumerOrgMSP
 
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=artifacts_test
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
 
       - CORE_PEER_ID=peer0.consumerorg.dot-box.com
       - CORE_PEER_ADDRESS=peer0.consumerorg.dot-box.com:17051
@@ -885,6 +895,7 @@ services:
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/crypto/peer/msp
     ports:
       - 17051:17051
+      - 17052:17052
     volumes:
       - ../organizations/crypto-config/peerOrganizations/consumerorg.dot-box.com/peers/peer0.consumerorg.dot-box.com/msp:/etc/hyperledger/crypto/peer/msp
       - ../organizations/crypto-config/peerOrganizations/consumerorg.dot-box.com/peers/peer0.consumerorg.dot-box.com/tls:/etc/hyperledger/crypto/peer/tls
@@ -903,7 +914,7 @@ services:
       - ORDERER_GENERAL_LOGLEVEL=debug
       - CORE_PEER_LOCALMSPID=ConsumerOrgMSP
 
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=artifacts_test
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
 
       - CORE_PEER_ID=peer1.consumerorg.dot-box.com
       - CORE_PEER_ADDRESS=peer1.consumerorg.dot-box.com:18051
@@ -926,6 +937,7 @@ services:
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/crypto/peer/msp
     ports:
       - 18051:18051
+      - 18052:18052
     volumes:
       - ../organizations/crypto-config/peerOrganizations/consumerorg.dot-box.com/peers/peer1.consumerorg.dot-box.com/msp:/etc/hyperledger/crypto/peer/msp
       - ../organizations/crypto-config/peerOrganizations/consumerorg.dot-box.com/peers/peer1.consumerorg.dot-box.com/tls:/etc/hyperledger/crypto/peer/tls
