@@ -2,3 +2,4 @@ channel-artifacts/*
 init_transactions/*
 organizations/crypto-config
 test.tar.gz
+chaincode/*
