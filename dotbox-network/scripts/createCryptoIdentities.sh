@@ -1,5 +1,6 @@
 #! /bin/bash
 
+
 chmod -R 0755 ../organizations/crypto-config
 # # Delete existing artifacts
 rm -rf ../organizations/crypto-config
