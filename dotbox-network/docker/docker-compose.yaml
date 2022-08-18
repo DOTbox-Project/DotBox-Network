@@ -525,47 +525,47 @@ services:
     networks:
       - dot-box
 
-  peer0.processororg.dot-box.com:
-    container_name: peer0.processororg.dot-box.com
-    extends:
-      file: base.yaml
-      service: peer-base
-    environment:
-      - FABRIC_LOGGING_SPEC=DEBUG
-      - ORDERER_GENERAL_LOGLEVEL=debug
-      - CORE_PEER_LOCALMSPID=ProcessorOrgMSP
+  # peer0.processororg.dot-box.com:
+  #   container_name: peer0.processororg.dot-box.com
+  #   extends:
+  #     file: base.yaml
+  #     service: peer-base
+  #   environment:
+  #     - FABRIC_LOGGING_SPEC=DEBUG
+  #     - ORDERER_GENERAL_LOGLEVEL=debug
+  #     - CORE_PEER_LOCALMSPID=ProcessorOrgMSP
 
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
+  #     - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
 
-      - CORE_PEER_ID=peer0.processororg.dot-box.com
-      - CORE_PEER_ADDRESS=peer0.processororg.dot-box.com:9051
-      - CORE_PEER_LISTENADDRESS=0.0.0.0:9051
-      - CORE_PEER_CHAINCODEADDRESS=peer0.processororg.dot-box.com:9052
-      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:9052
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.processororg.dot-box.com:9051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.processororg.dot-box.com:10051
+  #     - CORE_PEER_ID=peer0.processororg.dot-box.com
+  #     - CORE_PEER_ADDRESS=peer0.processororg.dot-box.com:9051
+  #     - CORE_PEER_LISTENADDRESS=0.0.0.0:9051
+  #     - CORE_PEER_CHAINCODEADDRESS=peer0.processororg.dot-box.com:9052
+  #     - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:9052
+  #     - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.processororg.dot-box.com:9051
+  #     - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.processororg.dot-box.com:10051
 
-      - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
-      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb2:5984
-      - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=
-      - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=
-      - CORE_METRICS_PROVIDER=prometheus
-      # - CORE_OPERATIONS_LISTENADDRESS=0.0.0.0:9440
-      - CORE_PEER_TLS_ENABLED=true
-      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/crypto/peer/tls/server.crt
-      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/crypto/peer/tls/server.key
-      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/crypto/peer/tls/ca.crt
-      - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/crypto/peer/msp
-    ports:
-      - 9051:9051
-      - 9052:9052
-    volumes:
-      - ../organizations/crypto-config/peerOrganizations/processororg.dot-box.com/peers/peer0.processororg.dot-box.com/msp:/etc/hyperledger/crypto/peer/msp
-      - ../organizations/crypto-config/peerOrganizations/processororg.dot-box.com/peers/peer0.processororg.dot-box.com/tls:/etc/hyperledger/crypto/peer/tls
-      - /var/run/:/host/var/run/
-      - ../organizations/:/etc/hyperledger/channel/
-    networks:
-      - dot-box
+  #     - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
+  #     - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb2:5984
+  #     - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=
+  #     - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=
+  #     - CORE_METRICS_PROVIDER=prometheus
+  #     # - CORE_OPERATIONS_LISTENADDRESS=0.0.0.0:9440
+  #     - CORE_PEER_TLS_ENABLED=true
+  #     - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/crypto/peer/tls/server.crt
+  #     - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/crypto/peer/tls/server.key
+  #     - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/crypto/peer/tls/ca.crt
+  #     - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/crypto/peer/msp
+  #   ports:
+  #     - 9051:9051
+  #     - 9052:9052
+  #   volumes:
+  #     - ../organizations/crypto-config/peerOrganizations/processororg.dot-box.com/peers/peer0.processororg.dot-box.com/msp:/etc/hyperledger/crypto/peer/msp
+  #     - ../organizations/crypto-config/peerOrganizations/processororg.dot-box.com/peers/peer0.processororg.dot-box.com/tls:/etc/hyperledger/crypto/peer/tls
+  #     - /var/run/:/host/var/run/
+  #     - ../organizations/:/etc/hyperledger/channel/
+  #   networks:
+  #     - dot-box
 
   # peer1.processororg.dot-box.com:
   #   container_name: peer1.processororg.dot-box.com
