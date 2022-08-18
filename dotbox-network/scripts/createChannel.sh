@@ -131,35 +131,35 @@ joinChannel(){
     setGlobalsForPeer1ProducerOrg
     peer channel join -b ../channel-artifacts/$CHANNEL_NAME.block
     
-    setGlobalsForPeer0ProcessorOrg
-    peer channel join -b ../channel-artifacts/$CHANNEL_NAME.block
+    # setGlobalsForPeer0ProcessorOrg
+    # peer channel join -b ../channel-artifacts/$CHANNEL_NAME.block
     
-    setGlobalsForPeer1ProcessorOrg
-    peer channel join -b ../channel-artifacts/$CHANNEL_NAME.block
+    # setGlobalsForPeer1ProcessorOrg
+    # peer channel join -b ../channel-artifacts/$CHANNEL_NAME.block
 
-    setGlobalsForPeer0RegulatorOrg
-    peer channel join -b ../channel-artifacts/$CHANNEL_NAME.block
+    # setGlobalsForPeer0RegulatorOrg
+    # peer channel join -b ../channel-artifacts/$CHANNEL_NAME.block
 
-    setGlobalsForPeer1RegulatorOrg
-    peer channel join -b ../channel-artifacts/$CHANNEL_NAME.block
+    # setGlobalsForPeer1RegulatorOrg
+    # peer channel join -b ../channel-artifacts/$CHANNEL_NAME.block
 
-    setGlobalsForPeer0WholesaleOrg
-    peer channel join -b ../channel-artifacts/$CHANNEL_NAME.block
+    # setGlobalsForPeer0WholesaleOrg
+    # peer channel join -b ../channel-artifacts/$CHANNEL_NAME.block
 
-    setGlobalsForPeer1WholesaleOrg
-    peer channel join -b ../channel-artifacts/$CHANNEL_NAME.block
+    # setGlobalsForPeer1WholesaleOrg
+    # peer channel join -b ../channel-artifacts/$CHANNEL_NAME.block
 
-    setGlobalsForPeer0RetailOrg
-    peer channel join -b ../channel-artifacts/$CHANNEL_NAME.block
+    # setGlobalsForPeer0RetailOrg
+    # peer channel join -b ../channel-artifacts/$CHANNEL_NAME.block
 
-    setGlobalsForPeer1RetailOrg
-    peer channel join -b ../channel-artifacts/$CHANNEL_NAME.block
+    # setGlobalsForPeer1RetailOrg
+    # peer channel join -b ../channel-artifacts/$CHANNEL_NAME.block
 
-    setGlobalsForPeer0ConsumerOrg
-    peer channel join -b ../channel-artifacts/$CHANNEL_NAME.block
+    # setGlobalsForPeer0ConsumerOrg
+    # peer channel join -b ../channel-artifacts/$CHANNEL_NAME.block
 
-    setGlobalsForPeer1ConsumerOrg
-    peer channel join -b ../channel-artifacts/$CHANNEL_NAME.block
+    # setGlobalsForPeer1ConsumerOrg
+    # peer channel join -b ../channel-artifacts/$CHANNEL_NAME.block
     
 }
 
@@ -167,20 +167,20 @@ updateAnchorPeers(){
     setGlobalsForPeer0ProducerOrg
     peer channel update -o localhost:7050 --ordererTLSHostnameOverride orderer.dot-box.com -c $CHANNEL_NAME -f ../init_transactions/${CORE_PEER_LOCALMSPID}anchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA
     
-    setGlobalsForPeer0ProcessorOrg
-    peer channel update -o localhost:7050 --ordererTLSHostnameOverride orderer.dot-box.com -c $CHANNEL_NAME -f ../init_transactions/${CORE_PEER_LOCALMSPID}anchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA
+    # setGlobalsForPeer0ProcessorOrg
+    # peer channel update -o localhost:7050 --ordererTLSHostnameOverride orderer.dot-box.com -c $CHANNEL_NAME -f ../init_transactions/${CORE_PEER_LOCALMSPID}anchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA
 
-    setGlobalsForPeer0RegulatorOrg
-    peer channel update -o localhost:7050 --ordererTLSHostnameOverride orderer.dot-box.com -c $CHANNEL_NAME -f ../init_transactions/${CORE_PEER_LOCALMSPID}anchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA   
+    # setGlobalsForPeer0RegulatorOrg
+    # peer channel update -o localhost:7050 --ordererTLSHostnameOverride orderer.dot-box.com -c $CHANNEL_NAME -f ../init_transactions/${CORE_PEER_LOCALMSPID}anchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA   
 
-    setGlobalsForPeer0WholesaleOrg
-    peer channel update -o localhost:7050 --ordererTLSHostnameOverride orderer.dot-box.com -c $CHANNEL_NAME -f ../init_transactions/${CORE_PEER_LOCALMSPID}anchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA
+    # setGlobalsForPeer0WholesaleOrg
+    # peer channel update -o localhost:7050 --ordererTLSHostnameOverride orderer.dot-box.com -c $CHANNEL_NAME -f ../init_transactions/${CORE_PEER_LOCALMSPID}anchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA
 
-    setGlobalsForPeer0RetailOrg
-    peer channel update -o localhost:7050 --ordererTLSHostnameOverride orderer.dot-box.com -c $CHANNEL_NAME -f ../init_transactions/${CORE_PEER_LOCALMSPID}anchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA
+    # setGlobalsForPeer0RetailOrg
+    # peer channel update -o localhost:7050 --ordererTLSHostnameOverride orderer.dot-box.com -c $CHANNEL_NAME -f ../init_transactions/${CORE_PEER_LOCALMSPID}anchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA
 
-    setGlobalsForPeer0ConsumerOrg
-    peer channel update -o localhost:7050 --ordererTLSHostnameOverride orderer.dot-box.com -c $CHANNEL_NAME -f ../init_transactions/${CORE_PEER_LOCALMSPID}anchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA
+    # setGlobalsForPeer0ConsumerOrg
+    # peer channel update -o localhost:7050 --ordererTLSHostnameOverride orderer.dot-box.com -c $CHANNEL_NAME -f ../init_transactions/${CORE_PEER_LOCALMSPID}anchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA
 }
 
 createChannel

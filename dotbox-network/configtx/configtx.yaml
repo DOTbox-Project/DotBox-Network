@@ -353,28 +353,28 @@ Orderer: &OrdererDefaults
           Port: 7050
           ClientTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer.dot-box.com/tls/server.crt
           ServerTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer.dot-box.com/tls/server.crt
-        - Host: orderer2.dot-box.com
-          Port: 8050
-          ClientTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer2.dot-box.com/tls/server.crt
-          ServerTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer2.dot-box.com/tls/server.crt
-        - Host: orderer3.dot-box.com
-          Port: 9050
-          ClientTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer3.dot-box.com/tls/server.crt
-          ServerTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer3.dot-box.com/tls/server.crt
-        - Host: orderer4.dot-box.com
-          Port: 10050
-          ClientTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer4.dot-box.com/tls/server.crt
-          ServerTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer4.dot-box.com/tls/server.crt
-        - Host: orderer5.dot-box.com
-          Port: 11050
-          ClientTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer5.dot-box.com/tls/server.crt
-          ServerTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer5.dot-box.com/tls/server.crt
+        # - Host: orderer2.dot-box.com
+        #   Port: 8050
+        #   ClientTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer2.dot-box.com/tls/server.crt
+        #   ServerTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer2.dot-box.com/tls/server.crt
+        # - Host: orderer3.dot-box.com
+        #   Port: 9050
+        #   ClientTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer3.dot-box.com/tls/server.crt
+        #   ServerTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer3.dot-box.com/tls/server.crt
+        # - Host: orderer4.dot-box.com
+        #   Port: 10050
+        #   ClientTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer4.dot-box.com/tls/server.crt
+        #   ServerTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer4.dot-box.com/tls/server.crt
+        # - Host: orderer5.dot-box.com
+        #   Port: 11050
+        #   ClientTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer5.dot-box.com/tls/server.crt
+        #   ServerTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer5.dot-box.com/tls/server.crt
     Addresses:
         - orderer.dot-box.com:7050
-        - orderer2.dot-box.com:8050
-        - orderer3.dot-box.com:9050
-        - orderer4.dot-box.com:10050
-        - orderer5.dot-box.com:11050
+        # - orderer2.dot-box.com:8050
+        # - orderer3.dot-box.com:9050
+        # - orderer4.dot-box.com:10050
+        # - orderer5.dot-box.com:11050
 
     # Batch Timeout: The amount of time to wait before creating a batch
     BatchTimeout: 2s
@@ -466,11 +466,11 @@ Profiles:
             <<: *ApplicationDefaults
             Organizations:
                 - *ProducerOrg
-                - *ProcessorOrg
-                - *RegulatorOrg
-                - *WholesaleOrg
-                - *RetailOrg
-                - *ConsumerOrg
+                # - *ProcessorOrg
+                # - *RegulatorOrg
+                # - *WholesaleOrg
+                # - *RetailOrg
+                # - *ConsumerOrg
             Capabilities:
                 <<: *ApplicationCapabilities
 
@@ -487,28 +487,28 @@ Profiles:
                   Port: 7050
                   ClientTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer.dot-box.com/tls/server.crt
                   ServerTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer.dot-box.com/tls/server.crt
-                - Host: orderer2.dot-box.com
-                  Port: 8050
-                  ClientTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer2.dot-box.com/tls/server.crt
-                  ServerTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer2.dot-box.com/tls/server.crt
-                - Host: orderer3.dot-box.com
-                  Port: 9050
-                  ClientTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer3.dot-box.com/tls/server.crt
-                  ServerTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer3.dot-box.com/tls/server.crt
-                - Host: orderer4.dot-box.com
-                  Port: 10050
-                  ClientTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer4.dot-box.com/tls/server.crt
-                  ServerTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer4.dot-box.com/tls/server.crt
-                - Host: orderer5.dot-box.com
-                  Port: 11050
-                  ClientTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer5.dot-box.com/tls/server.crt
-                  ServerTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer5.dot-box.com/tls/server.crt
+                # - Host: orderer2.dot-box.com
+                #   Port: 8050
+                #   ClientTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer2.dot-box.com/tls/server.crt
+                #   ServerTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer2.dot-box.com/tls/server.crt
+                # - Host: orderer3.dot-box.com
+                #   Port: 9050
+                #   ClientTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer3.dot-box.com/tls/server.crt
+                #   ServerTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer3.dot-box.com/tls/server.crt
+                # - Host: orderer4.dot-box.com
+                #   Port: 10050
+                #   ClientTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer4.dot-box.com/tls/server.crt
+                #   ServerTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer4.dot-box.com/tls/server.crt
+                # - Host: orderer5.dot-box.com
+                #   Port: 11050
+                #   ClientTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer5.dot-box.com/tls/server.crt
+                #   ServerTLSCert: ../organizations/crypto-config/ordererOrganizations/dot-box.com/orderers/orderer5.dot-box.com/tls/server.crt
             Addresses:
                 - orderer.dot-box.com:7050
-                - orderer2.dot-box.com:8050
-                - orderer3.dot-box.com:9050
-                - orderer4.dot-box.com:10050
-                - orderer5.dot-box.com:11050
+                # - orderer2.dot-box.com:8050
+                # - orderer3.dot-box.com:9050
+                # - orderer4.dot-box.com:10050
+                # - orderer5.dot-box.com:11050
 
             Organizations:
             - *OrdererOrg
@@ -518,8 +518,8 @@ Profiles:
             DotBoxConsortium:
                 Organizations:
                 - *ProducerOrg
-                - *ProcessorOrg
-                - *RegulatorOrg
-                - *WholesaleOrg
-                - *RetailOrg
-                - *ConsumerOrg
+                # - *ProcessorOrg
+                # - *RegulatorOrg
+                # - *WholesaleOrg
+                # - *RetailOrg
+                # - *ConsumerOrg

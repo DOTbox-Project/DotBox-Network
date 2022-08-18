@@ -24,20 +24,20 @@ createAnchorPeerUpdate(){
     echo "#######    Generating anchor peer update for producerOrgMSP  ##########"
     configtxgen -profile BasicChannel -configPath ../configtx/ -outputAnchorPeersUpdate ../init_transactions/ProducerOrgMSPanchors.tx -channelID $CHANNEL_NAME -asOrg ProducerOrgMSP
 
-    echo "#######    Generating anchor peer update for processorOrgMSP  ##########"
-    configtxgen -profile BasicChannel -configPath ../configtx/ -outputAnchorPeersUpdate ../init_transactions/ProcessorOrgMSPanchors.tx -channelID $CHANNEL_NAME -asOrg ProcessorOrgMSP
+    # echo "#######    Generating anchor peer update for processorOrgMSP  ##########"
+    # configtxgen -profile BasicChannel -configPath ../configtx/ -outputAnchorPeersUpdate ../init_transactions/ProcessorOrgMSPanchors.tx -channelID $CHANNEL_NAME -asOrg ProcessorOrgMSP
 
-    echo "#######    Generating anchor peer update for regulatorOrgMSP  ##########"
-    configtxgen -profile BasicChannel -configPath ../configtx/ -outputAnchorPeersUpdate ../init_transactions/RegulatorOrgMSPanchors.tx -channelID $CHANNEL_NAME -asOrg RegulatorOrgMSP
+    # echo "#######    Generating anchor peer update for regulatorOrgMSP  ##########"
+    # configtxgen -profile BasicChannel -configPath ../configtx/ -outputAnchorPeersUpdate ../init_transactions/RegulatorOrgMSPanchors.tx -channelID $CHANNEL_NAME -asOrg RegulatorOrgMSP
 
-    echo "#######    Generating anchor peer update for wholesaleOrgMSP  ##########"
-    configtxgen -profile BasicChannel -configPath ../configtx/ -outputAnchorPeersUpdate ../init_transactions/WholesaleOrgMSPanchors.tx -channelID $CHANNEL_NAME -asOrg WholesaleOrgMSP
+    # echo "#######    Generating anchor peer update for wholesaleOrgMSP  ##########"
+    # configtxgen -profile BasicChannel -configPath ../configtx/ -outputAnchorPeersUpdate ../init_transactions/WholesaleOrgMSPanchors.tx -channelID $CHANNEL_NAME -asOrg WholesaleOrgMSP
 
-    echo "#######    Generating anchor peer update for retailOrgMSP  ##########"
-    configtxgen -profile BasicChannel -configPath ../configtx/ -outputAnchorPeersUpdate ../init_transactions/RetailOrgMSPanchors.tx -channelID $CHANNEL_NAME -asOrg RetailOrgMSP
+    # echo "#######    Generating anchor peer update for retailOrgMSP  ##########"
+    # configtxgen -profile BasicChannel -configPath ../configtx/ -outputAnchorPeersUpdate ../init_transactions/RetailOrgMSPanchors.tx -channelID $CHANNEL_NAME -asOrg RetailOrgMSP
 
-    echo "#######    Generating anchor peer update for consumerOrgMSP  ##########"
-    configtxgen -profile BasicChannel -configPath ../configtx/ -outputAnchorPeersUpdate ../init_transactions/ConsumerOrgMSPanchors.tx -channelID $CHANNEL_NAME -asOrg ConsumerOrgMSP
+    # echo "#######    Generating anchor peer update for consumerOrgMSP  ##########"
+    # configtxgen -profile BasicChannel -configPath ../configtx/ -outputAnchorPeersUpdate ../init_transactions/ConsumerOrgMSPanchors.tx -channelID $CHANNEL_NAME -asOrg ConsumerOrgMSP
 }
 
 
