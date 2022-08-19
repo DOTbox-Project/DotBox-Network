@@ -480,6 +480,7 @@ services:
       - ../organizations/crypto-config/peerOrganizations/producerorg.dot-box.com/peers/peer0.producerorg.dot-box.com/tls:/etc/hyperledger/crypto/peer/tls
       - /var/run/:/host/var/run/
       - ../organizations/:/etc/hyperledger/channel/
+    command: peer node start --peer-chaincodedev=true
     networks:
       - dot-box
 
@@ -522,6 +523,7 @@ services:
       - ../organizations/crypto-config/peerOrganizations/producerorg.dot-box.com/peers/peer1.producerorg.dot-box.com/tls:/etc/hyperledger/crypto/peer/tls
       - /var/run/:/host/var/run/
       - ../organizations/:/etc/hyperledger/channel/
+    command: peer node start --peer-chaincodedev=true
     networks:
       - dot-box
 
