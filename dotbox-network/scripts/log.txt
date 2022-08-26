@@ -1,0 +1,4 @@
+Installed chaincodes on peer:
+Package ID: dotbox-chaincode_1:e8836d631e7cddb2c7c71878c9b4c9e4260f6949ae4f9bb086e21950947443d1, Label: dotbox-chaincode_1
+Package ID: dotbox-chaincode_2:df4dcdf0e74d043a9d40c5b668b74ed32dc9a44edfcc9d0f3e5d7370ecddb9bc, Label: dotbox-chaincode_2
+Package ID: dotbox-chaincode_3:0e15e005a587e17528b290cea4c680a1da8c955e5ec5c9c2cbbe6f1e4fd0efd9, Label: dotbox-chaincode_3
