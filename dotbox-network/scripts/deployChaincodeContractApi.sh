@@ -123,7 +123,7 @@ setGlobalsForPeer1ConsumerOrg(){
 # presetup
 
 CC_RUNTIME_LANGUAGE="node"
-VERSION="1"
+VERSION="6"
 CC_SRC_PATH="../../../DotBox-Chaincode/dotbox-chaincode"
 CC_NAME="dotbox-chaincode"
 
@@ -408,7 +408,7 @@ chaincodeInvoke(){
 
 packageChaincode
 installChaincode
-# queryInstalled
+queryInstalled
 approveForProducerOrg
 # checkCommitReadyness1
 approveForProcessorOrg
@@ -422,7 +422,7 @@ approveForRetailOrg
 approveForConsumerOrg
 # checkCommitReadyness6
 commitChaincodeDefinition
-# queryCommitted
+queryCommitted
 # chaincodeInvokeInit
 # chaincodeInvoke
 # chaincodeQuery

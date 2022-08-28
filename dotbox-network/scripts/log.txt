@@ -1,4 +1,7 @@
 Installed chaincodes on peer:
-Package ID: dotbox-chaincode_1:e8836d631e7cddb2c7c71878c9b4c9e4260f6949ae4f9bb086e21950947443d1, Label: dotbox-chaincode_1
-Package ID: dotbox-chaincode_2:df4dcdf0e74d043a9d40c5b668b74ed32dc9a44edfcc9d0f3e5d7370ecddb9bc, Label: dotbox-chaincode_2
-Package ID: dotbox-chaincode_3:0e15e005a587e17528b290cea4c680a1da8c955e5ec5c9c2cbbe6f1e4fd0efd9, Label: dotbox-chaincode_3
+Package ID: dotbox-chaincode_6:f70a0f86af7f1fd35dcd91acf8fa09642e56fa397dc263301c2b0624a230c40e, Label: dotbox-chaincode_6
+Package ID: dotbox-chaincode_1:d842f7d3cb34daf33a6e63163f384bd18f5f1147a33b2fcef006aea6cc692ef4, Label: dotbox-chaincode_1
+Package ID: dotbox-chaincode_2:96f66b154ff5f7396c08ef61a5aeedbfc3542cca00c8688c5accfdea5cd27930, Label: dotbox-chaincode_2
+Package ID: dotbox-chaincode_3:5455b200274450532696bcef9308977e67bc42224798e2f1eb5f2d6a57549dd6, Label: dotbox-chaincode_3
+Package ID: dotbox-chaincode_4:c116b2cc766fc8ba69a3a975a3eda7c617fa3f1e802823df9ebf1a98e175a6e1, Label: dotbox-chaincode_4
+Package ID: dotbox-chaincode_5:60de91037d3b82510bf65bdde68cde7d4168bff9b59a86781cc85dacd4f54ad7, Label: dotbox-chaincode_5

@@ -37,7 +37,7 @@ services:
       - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-tls/priv_sk
     ports:
       - "9054:7054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b processor-admin:adminpw -d'
     volumes:
       - ../organizations/crypto-config/peerOrganizations/processororg.dot-box.com/ca/:/etc/hyperledger/fabric-ca-server-config
       - ../organizations/crypto-config/peerOrganizations/processororg.dot-box.com/tlsca/:/etc/hyperledger/fabric-ca-server-tls
@@ -58,7 +58,7 @@ services:
       - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-tls/priv_sk
     ports:
       - "11054:7054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b regulator-admin:adminpw -d'
     volumes:
       - ../organizations/crypto-config/peerOrganizations/regulatororg.dot-box.com/ca/:/etc/hyperledger/fabric-ca-server-config
       - ../organizations/crypto-config/peerOrganizations/regulatororg.dot-box.com/tlsca/:/etc/hyperledger/fabric-ca-server-tls
@@ -79,7 +79,7 @@ services:
       - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-tls/priv_sk
     ports:
       - "13054:7054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b wholesale-admin:adminpw -d'
     volumes:
       - ../organizations/crypto-config/peerOrganizations/wholesaleorg.dot-box.com/ca/:/etc/hyperledger/fabric-ca-server-config
       - ../organizations/crypto-config/peerOrganizations/wholesaleorg.dot-box.com/tlsca/:/etc/hyperledger/fabric-ca-server-tls
@@ -100,7 +100,7 @@ services:
       - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-tls/priv_sk
     ports:
       - "15054:7054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b retail-admin:adminpw -d'
     volumes:
       - ../organizations/crypto-config/peerOrganizations/retailorg.dot-box.com/ca/:/etc/hyperledger/fabric-ca-server-config
       - ../organizations/crypto-config/peerOrganizations/retailorg.dot-box.com/tlsca/:/etc/hyperledger/fabric-ca-server-tls
@@ -121,7 +121,7 @@ services:
       - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-tls/priv_sk
     ports:
       - "17054:7054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start -b consumer-admin:adminpw -d'
     volumes:
       - ../organizations/crypto-config/peerOrganizations/consumerorg.dot-box.com/ca/:/etc/hyperledger/fabric-ca-server-config
       - ../organizations/crypto-config/peerOrganizations/consumerorg.dot-box.com/tlsca/:/etc/hyperledger/fabric-ca-server-tls
