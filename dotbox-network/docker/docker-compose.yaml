@@ -449,6 +449,7 @@ services:
       - CORE_PEER_LOCALMSPID=ProducerOrgMSP
 
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
+      - CORE_LEDGER_HISTORY_ENABLEHISTORY_DATABASE=true 
 
       - CORE_PEER_ID=peer0.producerorg.dot-box.com
       - CORE_PEER_ADDRESS=peer0.producerorg.dot-box.com:7051
@@ -494,6 +495,7 @@ services:
       - CORE_PEER_LOCALMSPID=ProducerOrgMSP
 
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
+      - CORE_LEDGER_HISTORY_ENABLEHISTORY_DATABASE=true 
 
       - CORE_PEER_ID=peer1.producerorg.dot-box.com
       - CORE_PEER_ADDRESS=peer1.producerorg.dot-box.com:8051
@@ -536,6 +538,7 @@ services:
       - CORE_PEER_LOCALMSPID=ProcessorOrgMSP
 
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
+      - CORE_LEDGER_HISTORY_ENABLEHISTORY_DATABASE=true 
 
       - CORE_PEER_ID=peer0.processororg.dot-box.com
       - CORE_PEER_ADDRESS=peer0.processororg.dot-box.com:9051
@@ -578,6 +581,7 @@ services:
       - CORE_PEER_LOCALMSPID=ProcessorOrgMSP
 
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
+      - CORE_LEDGER_HISTORY_ENABLEHISTORY_DATABASE=true 
 
       - CORE_PEER_ID=peer1.processororg.dot-box.com
       - CORE_PEER_ADDRESS=peer1.processororg.dot-box.com:10051
@@ -621,6 +625,7 @@ services:
       - CORE_PEER_LOCALMSPID=RegulatorOrgMSP
 
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
+      - CORE_LEDGER_HISTORY_ENABLEHISTORY_DATABASE=true 
 
       - CORE_PEER_ID=peer0.regulatororg.dot-box.com
       - CORE_PEER_ADDRESS=peer0.regulatororg.dot-box.com:11051
@@ -663,6 +668,7 @@ services:
       - CORE_PEER_LOCALMSPID=RegulatorOrgMSP
 
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
+      - CORE_LEDGER_HISTORY_ENABLEHISTORY_DATABASE=true 
 
       - CORE_PEER_ID=peer1.regulatororg.dot-box.com
       - CORE_PEER_ADDRESS=peer1.regulatororg.dot-box.com:12051
@@ -705,6 +711,7 @@ services:
       - CORE_PEER_LOCALMSPID=WholesaleOrgMSP
 
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
+      - CORE_LEDGER_HISTORY_ENABLEHISTORY_DATABASE=true 
 
       - CORE_PEER_ID=peer0.wholesaleorg.dot-box.com
       - CORE_PEER_ADDRESS=peer0.wholesaleorg.dot-box.com:13051
@@ -747,6 +754,7 @@ services:
       - CORE_PEER_LOCALMSPID=WholesaleOrgMSP
 
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
+      - CORE_LEDGER_HISTORY_ENABLEHISTORY_DATABASE=true 
 
       - CORE_PEER_ID=peer1.wholesaleorg.dot-box.com
       - CORE_PEER_ADDRESS=peer1.wholesaleorg.dot-box.com:14051
@@ -789,6 +797,7 @@ services:
       - CORE_PEER_LOCALMSPID=RetailOrgMSP
 
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
+      - CORE_LEDGER_HISTORY_ENABLEHISTORY_DATABASE=true 
 
       - CORE_PEER_ID=peer0.retailorg.dot-box.com
       - CORE_PEER_ADDRESS=peer0.retailorg.dot-box.com:15051
@@ -831,6 +840,7 @@ services:
       - CORE_PEER_LOCALMSPID=RetailOrgMSP
 
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
+      - CORE_LEDGER_HISTORY_ENABLEHISTORY_DATABASE=true 
 
       - CORE_PEER_ID=peer1.retailorg.dot-box.com
       - CORE_PEER_ADDRESS=peer1.retailorg.dot-box.com:16051
@@ -873,6 +883,7 @@ services:
       - CORE_PEER_LOCALMSPID=ConsumerOrgMSP
 
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
+      - CORE_LEDGER_HISTORY_ENABLEHISTORY_DATABASE=true 
 
       - CORE_PEER_ID=peer0.consumerorg.dot-box.com
       - CORE_PEER_ADDRESS=peer0.consumerorg.dot-box.com:17051
@@ -915,6 +926,7 @@ services:
       - CORE_PEER_LOCALMSPID=ConsumerOrgMSP
 
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_dot-box
+      - CORE_LEDGER_HISTORY_ENABLEHISTORY_DATABASE=true 
 
       - CORE_PEER_ID=peer1.consumerorg.dot-box.com
       - CORE_PEER_ADDRESS=peer1.consumerorg.dot-box.com:18051

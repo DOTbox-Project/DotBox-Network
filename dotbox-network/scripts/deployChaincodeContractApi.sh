@@ -123,7 +123,7 @@ setGlobalsForPeer1ConsumerOrg(){
 # presetup
 
 CC_RUNTIME_LANGUAGE="node"
-VERSION="6"
+VERSION="1"
 CC_SRC_PATH="../../../DotBox-Chaincode/dotbox-chaincode"
 CC_NAME="dotbox-chaincode"
 
@@ -137,7 +137,7 @@ CC_NAME="dotbox-chaincode"
     
 
 packageChaincode(){
-    rm -rf ${CC_NAME}.tar.gz
+    rm -rf ../chaincode/${CC_NAME}.tar.gz
     setGlobalsForPeer0ProducerOrg
     peer lifecycle chaincode package ../chaincode/${CC_NAME}.tar.gz --path ${CC_SRC_PATH} --lang ${CC_RUNTIME_LANGUAGE} --label ${CC_NAME}_${VERSION}
     echo "===================== Chaincode is packaged on peer0.producerorg ===================== "
@@ -345,7 +345,7 @@ chaincodeInvokeInit(){
     peer chaincode query -o localhost:7050 --ordererTLSHostnameOverride orderer.dot-box.com \
     --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n ${CC_NAME} \
     --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_PRODUCERORG_CA \
-    -c '{"function":"getAllProducers","Args":[]}'
+    -c '{"function":"getAllProcessors","Args":[]}'
     # --peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_PROCESSORORG_CA \
     # --peerAddresses localhost:11051 --tlsRootCertFiles $PEER0_REGULATORORG_CA \
     # --peerAddresses localhost:13051 --tlsRootCertFiles $PEER0_WHOLESALEORG_CA \
@@ -369,7 +369,7 @@ chaincodeInvoke(){
     --peerAddresses localhost:13051 --tlsRootCertFiles $PEER0_WHOLESALEORG_CA  \
     --peerAddresses localhost:15051 --tlsRootCertFiles $PEER0_RETAILORG_CA  \
     --peerAddresses localhost:17051 --tlsRootCertFiles $PEER0_CONSUMERORG_CA  \
-    -c '{"Args":["createProducer","123","Gyabeng Elton","gyabengelton@gmail.com","password","Gyabeng Farms","Tema","02134567009"]}'
+    -c '{"Args":["deleteProcessor","123"]}'
     
 #     setGlobalsForPeer0Org1
 
@@ -410,7 +410,6 @@ packageChaincode
 installChaincode
 queryInstalled
 approveForProducerOrg
-# checkCommitReadyness1
 approveForProcessorOrg
 # checkCommitReadyness2
 approveForRegulatorOrg
@@ -420,6 +419,7 @@ approveForWholesaleOrg
 approveForRetailOrg
 # checkCommitReadyness5
 approveForConsumerOrg
+checkCommitReadyness1
 # checkCommitReadyness6
 commitChaincodeDefinition
 queryCommitted

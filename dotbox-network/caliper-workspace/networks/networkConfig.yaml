@@ -1,0 +1,24 @@
+name: Calier test
+version: "2.0.0"
+
+caliper:
+  blockchain: fabric
+
+channels:
+  - channelName: channel1
+    contracts:
+    - id: dotbox-chaincode
+
+organizations:
+  - mspid: ProducerOrgMSP
+    identities:
+      certificates:
+      - name: 'User1'
+        clientPrivateKey:
+          path: './config/priv_sk'
+        clientSignedCert:
+          path: './config/User1@producerorg.dot-box.com-cert.pem'
+    connectionProfile:
+      path: './config/producerorg.json'
+      discover: true
+
